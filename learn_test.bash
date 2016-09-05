@@ -41,7 +41,7 @@ then
   exit 1
 fi
 
-${HOME}/anaconda3/bin/python genf.py $@
+${HOME}/anaconda3/bin/python genf.py $2
 
 # I should learn, test, and report:
 ${HOME}/anaconda3/bin/python learn_tst_rpt.py

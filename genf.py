@@ -1,7 +1,7 @@
 # genf.py
 
 # Demo:
-# ~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'
+# ~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'
 
 # This script should build two types of ML models:
 # Linear   Regression
@@ -9,7 +9,6 @@
 # from GSPC prices from Yahoo.
 # Then it should show a comparison of predictive effectiveness from the models.
 
-# TRAINSIZE should specify years of training data to learn from.
 # SLOPES should specify moving-avg durations, in days, which I compute slopes from.
 # I should have at least two SLOPE values and they should be between 2 and 32.
 
@@ -22,28 +21,19 @@ import pdb
 # I should check cmd line arg
 import sys
 pdb.set_trace()
-if (len(sys.argv) < 3):
+if (len(sys.argv) != 2):
+  print('You typed something wrong:')
   print('Demo:')
-  print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
+  print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
   print('...')
   sys.exit()
 arg1_l = sys.argv[1].split('=')
-arg2_l = sys.argv[2].split('=')
-if (arg1_l[0] != 'TRAINSIZE'):
-  print('Problem:')
-  print('I cannot determine TRAINSIZE from your command line.')
-  print('Demo:')
-  print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
-  print('...')
-  sys.exit()
-
-if (arg2_l[0] != 'SLOPES'):
+if (arg1_l[0] != 'SLOPES'):
   print('Problem:')
   print('I cannot determine SLOPES from your command line.')
   print('Demo:')
-  print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
+  print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
   print('...')
   sys.exit()
-
 
 'bye'      
