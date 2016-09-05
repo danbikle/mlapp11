@@ -20,12 +20,11 @@ import pdb
 
 # I should check cmd line arg
 import sys
-pdb.set_trace()
 if (len(sys.argv) != 2):
+  pdb.set_trace()
   print('You typed something wrong:')
   print('Demo:')
   print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
-  print('...')
   sys.exit()
 arg1_l = sys.argv[1].split('=')
 if (arg1_l[0] != 'SLOPES'):
@@ -33,7 +32,13 @@ if (arg1_l[0] != 'SLOPES'):
   print('I cannot determine SLOPES from your command line.')
   print('Demo:')
   print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
-  print('...')
   sys.exit()
 
-'bye'      
+slopes_s = arg1_l[1]
+slopes_a = []
+for slope_s in slopes_s.split(','):
+    slope_i = int(slope_s.replace('[','').replace(']',''))
+    slopes_a.append(slope_i)
+pdb.set_trace()
+slopes_a
+'bye'
