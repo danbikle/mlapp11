@@ -45,7 +45,7 @@ gspc_df = pd.read_csv('/tmp/mlapp11/gspc2.csv')
 # I should compute pctlead:
 gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).fillna(0)
 
-# I should compute mvgavg for each slope_i
+# I should compute mvgavg-slope for each slope_i
 
 # ref:
 # http://www.ml4.us/cclasses/class03pd41
@@ -53,9 +53,10 @@ gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).
 # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rolling.html#pandas.DataFrame.rolling
 
 for slope_i in slopes_a:
-  pdb.set_trace()
-  slope_i
-  rollx = gspc_df.rolling(window=slope_i)
-  key_s = 'mvgavg'+slope_i
-
+  rollx          = gspc_df.rolling(window=slope_i)
+  col_s          = 'slope'+str(slope_i)
+  slope_sr       = rollx.mean().cp - rollx.mean().cp.shift(1)
+  gspc_df[col_s] = slope_sr
 'bye'
+pdb.set_trace()
+gspc_df.tail()
