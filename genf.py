@@ -27,3 +27,23 @@ if (len(sys.argv) < 3):
   print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
   print('...')
   sys.exit()
+arg1_l = sys.argv[1].split('=')
+arg2_l = sys.argv[2].split('=')
+if (arg1_l[0] != 'TRAINSIZE'):
+  print('Problem:')
+  print('I cannot determine TRAINSIZE from your command line.')
+  print('Demo:')
+  print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
+  print('...')
+  sys.exit()
+
+if (arg2_l[0] != 'SLOPES'):
+  print('Problem:')
+  print('I cannot determine SLOPES from your command line.')
+  print('Demo:')
+  print("~/anaconda3/bin/python genf.py TRAINSIZE=30 SLOPES='[3,5,9,17]'")
+  print('...')
+  sys.exit()
+
+
+'bye'      
