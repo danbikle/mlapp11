@@ -34,6 +34,7 @@ if (arg1_l[0] != 'SLOPES'):
   print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
   sys.exit()
 
+# I should get integers from arg1_l:
 slopes_s = arg1_l[1]
 slopes_a = []
 for slope_s in slopes_s.split(','):
@@ -57,6 +58,8 @@ for slope_i in slopes_a:
   col_s          = 'slope'+str(slope_i)
   slope_sr       = rollx.mean().cp - rollx.mean().cp.shift(1)
   gspc_df[col_s] = slope_sr
+
+# I should write to CSV file to be used later:
+gspc_df.to_csv('/tmp/mlapp11/feat.csv', float_format='%4.4f', index=False)
 'bye'
-pdb.set_trace()
-gspc_df.tail()
+
