@@ -31,12 +31,16 @@ sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp
 
 # I should compute features from the prices:
 
-echo $TRAINSIZE
-echo $SLOPES
-echo $@
-echo $#
+if [ $# -ne 2 ]
+then
+  echo
+  echo "You typed something wrong."
+  echo "Try something like this:"
+  echo "Demo:"
+  echo "./learn_test.bash TRAINSIZE=30 SLOPES='[3,5,9,17]'"
+  exit 1
+fi
 
-exit
 ${HOME}/anaconda3/bin/python genf.py $TRAINSIZE $SLOPES
 
 # I should learn, test, and report:
