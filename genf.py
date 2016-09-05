@@ -39,6 +39,23 @@ slopes_a = []
 for slope_s in slopes_s.split(','):
     slope_i = int(slope_s.replace('[','').replace(']',''))
     slopes_a.append(slope_i)
-pdb.set_trace()
-slopes_a
+
+gspc_df = pd.read_csv('/tmp/mlapp11/gspc2.csv')
+
+# I should compute pctlead:
+gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).fillna(0)
+
+# I should compute mvgavg for each slope_i
+
+# ref:
+# http://www.ml4.us/cclasses/class03pd41
+# http://pandas.pydata.org/pandas-docs/stable/computation.html#rolling-windows
+# http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rolling.html#pandas.DataFrame.rolling
+
+for slope_i in slopes_a:
+  pdb.set_trace()
+  slope_i
+  rollx = gspc_df.rolling(window=slope_i)
+  key_s = 'mvgavg'+slope_i
+
 'bye'
