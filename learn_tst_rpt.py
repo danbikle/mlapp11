@@ -43,4 +43,21 @@ test_sr  = (feat_df.cdate > test_start_s)  & (feat_df.cdate < test_end_s)
 train_df = feat_df[train_sr]
 test_df  = feat_df[test_sr]
 
+# I should build a Linear Regression model from slope columns in train_df:
+x_train_a = np.array(train_df)[:,3:]
+y_train_a = np.array(train_df.pctlead)
+from sklearn import linear_model
+linr_model = linear_model.LinearRegression()
+# I should learn:
+linr_model.fit(x_train_a, y_train_a)
+
+# Now that I have learned, I should predict:
+x_test_a       = np.array(test_df)[:,3:]
+predictions_a  = linr_model.predict(x_test_a)
+predictions_df = test_df.copy()
+
+# I should create a CSV to report from:
+predictions_df['predictions'] = predictions_a.reshape(len(predictions_a),1)
+predictions_df.to_csv('/tmp/mlapp11/predictions_linr.csv', float_format='%4.3f', index=False)
+
 'bye'
