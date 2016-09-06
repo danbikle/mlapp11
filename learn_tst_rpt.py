@@ -9,7 +9,7 @@
 # Demo:
 # ~/anaconda3/bin/python genf.py TRAINSIZE=30 TESTYEAR=2015
 
-# Above demo will train from years 1984 through 2014 and predict each day of 2015
+# Above demo will train from years 1985 through 2014 and predict each day of 2015
 
 import numpy  as np
 import pandas as pd
@@ -39,10 +39,8 @@ test_end_s    = str(test_end_i)
 
 feat_df  = pd.read_csv('/tmp/mlapp11/feat.csv')
 train_sr = (feat_df.cdate > train_start_s) & (feat_df.cdate < train_end_s)
+test_sr  = (feat_df.cdate > test_start_s)  & (feat_df.cdate < test_end_s)
 train_df = feat_df[train_sr]
-test_sr  = (feat_df.cdate > test_start_s) & (feat_df.cdate < test_end_s)
-pdb.set_trace()
-test_sr.tail()
-len(test_sr)
+test_df  = feat_df[test_sr]
 
 'bye'
