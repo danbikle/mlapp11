@@ -26,6 +26,17 @@ if (len(sys.argv) != 3):
 pdb.set_trace()
 
 # I should get cmd line args:
-trainsize_i = int(sys.argv[1].split('=')[1])
-testyear_s  = sys.argv[2].split('=')[1]
+trainsize     = int(sys.argv[1].split('=')[1])
+testyear_s    =     sys.argv[2].split('=')[1]
+train_end_i   = int(testyear_s)
+train_end_s   =     testyear_s
+train_start_i = train_end_i - train_size
+train_start_s = str(train_start_i)
+# train and test observations should not overlap:
+test_start_i  = train_end_i
+test_start_s  = str(test_start_i)
+test_end_i    = test_start_i+1
+test_end_s    = str(test_end_i)
+
+
 'bye'
