@@ -3,7 +3,7 @@
 # learn_test.bash
 
 # Demo:
-# ./learn_test.bash TRAINSIZE=30 TESTYEAR=2015 SLOPES='[3,5,9,17]'
+# ./learn_test.bash TRAINSIZE=30 TESTYEAR=2015 SLOPES='[2,3,5,9,17]'
 
 # This script should build two types of ML models:
 # Linear   Regression
@@ -27,8 +27,8 @@ mkdir -p /tmp/mlapp11/
 # debug
 
 # I should extract two columns and also sort:
-echo cdate,cp                                                       > /tmp/mlapp11/gspc2.csv
-sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp11/gspc2.csv
+# echo cdate,cp                                                       > /tmp/mlapp11/gspc2.csv
+# sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp11/gspc2.csv
 
 # I should compute features from the prices:
 
@@ -38,7 +38,7 @@ then
   echo "You typed something wrong."
   echo "Try something like this:"
   echo "Demo:"
-  echo "./learn_test.bash TRAINSIZE=30 TESTYEAR=2015 SLOPES='[3,5,9,17]'"
+  echo "./learn_test.bash TRAINSIZE=30 TESTYEAR=2015 SLOPES='[2,3,5,9,17]'"
   exit 1
 fi
 
