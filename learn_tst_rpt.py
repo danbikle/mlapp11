@@ -64,5 +64,34 @@ predictions_df.to_csv('/tmp/mlapp11/predictions_linr.csv', float_format='%4.3f',
 logr_model    = linear_model.LogisticRegression()
 # I should get classification from y_train_a:
 class_train_a = (y_train_a > np.median(y_train_a))
+# I should learn:
+logr_model.fit(x_train_a, class_train_a)
+
+# Now that I have learned, I should predict:
+predictions_a  = logr_model.predict(x_test_a)
+predictions_df = test_df.copy()
+
+# I should create a CSV to report from:
+predictions_df['predictions'] = predictions_a.reshape(len(predictions_a),1)
+predictions_df.to_csv('/tmp/mlapp11/predictions_logr.csv', float_format='%4.3f', index=False)
+
+# I should report long-only-effectiveness:
+linr_df = pd.read_csv('/tmp/mlapp11/predictions_linr.csv')
+print('Long-Only-Effectiveness:')
+print(np.sum(linr_df.pctlead))
+
+# I should report Linear-Regression-Effectiveness:
+eff_sr  = linr_df.pctlead * np.sign(linr_df.predictions)
+print('Linear-Regression-Effectiveness:')
+print(np.sum(eff_sr))
+
+# I should report Logistic-Regression-Effectiveness:
+logr_df = pd.read_csv('/tmp/mlapp11/predictions_logr.csv')
+pos_df  = logr_df[logr_df.predictions]
+neg_df  = logr_df[~logr_df.predictions]
+pos_f   = np.sum(pos_df.pctlead)
+neg_f   = np.sum(neg_df.pctlead)
+print('Logistic-Regression-Effectiveness:')
+print(pos_f-neg_f)
 
 'bye'
