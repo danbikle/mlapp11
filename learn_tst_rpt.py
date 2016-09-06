@@ -23,7 +23,6 @@ if (len(sys.argv) != 3):
   print('Demo:')
   print("~/anaconda3/bin/python genf.py TRAINSIZE=30 TESTYEAR=2015")
   sys.exit()
-pdb.set_trace()
 
 # I should get cmd line args:
 trainsize     = int(sys.argv[1].split('=')[1])
@@ -38,5 +37,12 @@ test_start_s  = str(test_start_i)
 test_end_i    = test_start_i+1
 test_end_s    = str(test_end_i)
 
+feat_df  = pd.read_csv('/tmp/mlapp11/feat.csv')
+train_sr = (feat_df.cdate > train_start_s) & (feat_df.cdate < train_end_s)
+train_df = feat_df[train_sr]
+test_sr  = (feat_df.cdate > test_start_s) & (feat_df.cdate < test_end_s)
+pdb.set_trace()
+test_sr.tail()
+len(test_sr)
 
 'bye'
