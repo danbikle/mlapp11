@@ -21,14 +21,20 @@ rm -f /tmp/mlapp11/many_predictions_linr.csv
 rm -f /tmp/mlapp11/many_predictions_logr.csv
 # I should loop through a range of years:
 
-./learn_test.bash TRAINSIZE=25 TESTYEAR=1990 SLOPES='[2,3,5,9,17]'
-cat /tmp/mlapp11/predictions_linr.csv >> /tmp/mlapp11/many_predictions_linr.csv
-cat /tmp/mlapp11/predictions_logr.csv >> /tmp/mlapp11/many_predictions_logr.csv
+for year in `seq 1990 2016`
+do
+  echo Gathering predictions for: $year
+  ./learn_test.bash TRAINSIZE=25 TESTYEAR=$year SLOPES='[2,3,5,9,17]'
+  cat /tmp/mlapp11/predictions_linr.csv >> /tmp/mlapp11/many_predictions_linr.csv
+  cat /tmp/mlapp11/predictions_logr.csv >> /tmp/mlapp11/many_predictions_logr.csv
+done
 
-./learn_test.bash TRAINSIZE=25 TESTYEAR=1991 SLOPES='[2,3,5,9,17]'
-cat /tmp/mlapp11/predictions_linr.csv >> /tmp/mlapp11/many_predictions_linr.csv
-cat /tmp/mlapp11/predictions_logr.csv >> /tmp/mlapp11/many_predictions_logr.csv
+head -1 /tmp/mlapp11/many_predictions_linr.csv        > /tmp/mlapp11/tmp.csv
+grep -v cdate /tmp/mlapp11/many_predictions_linr.csv >> /tmp/mlapp11/tmp.csv
+mv /tmp/mlapp11/tmp.csv /tmp/mlapp11/many_predictions_linr.csv
+
+head -1 /tmp/mlapp11/many_predictions_logr.csv        > /tmp/mlapp11/tmp.csv
+grep -v cdate /tmp/mlapp11/many_predictions_logr.csv >> /tmp/mlapp11/tmp.csv
+mv /tmp/mlapp11/tmp.csv /tmp/mlapp11/many_predictions_logr.csv
 
 exit
-
-
