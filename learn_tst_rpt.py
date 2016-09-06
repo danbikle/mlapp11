@@ -60,4 +60,9 @@ predictions_df = test_df.copy()
 predictions_df['predictions'] = predictions_a.reshape(len(predictions_a),1)
 predictions_df.to_csv('/tmp/mlapp11/predictions_linr.csv', float_format='%4.3f', index=False)
 
+# I should build a Logistic Regression model.
+logr_model    = linear_model.LogisticRegression()
+# I should get classification from y_train_a:
+class_train_a = (y_train_a > np.median(y_train_a))
+
 'bye'
