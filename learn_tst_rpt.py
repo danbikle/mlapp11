@@ -30,7 +30,7 @@ trainsize     = int(sys.argv[1].split('=')[1])
 testyear_s    =     sys.argv[2].split('=')[1]
 train_end_i   = int(testyear_s)
 train_end_s   =     testyear_s
-train_start_i = train_end_i - train_size
+train_start_i = train_end_i - trainsize
 train_start_s = str(train_start_i)
 # train and test observations should not overlap:
 test_start_i  = train_end_i
