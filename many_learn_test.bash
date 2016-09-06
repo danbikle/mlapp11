@@ -37,4 +37,9 @@ head -1 /tmp/mlapp11/many_predictions_logr.csv        > /tmp/mlapp11/tmp.csv
 grep -v cdate /tmp/mlapp11/many_predictions_logr.csv >> /tmp/mlapp11/tmp.csv
 mv /tmp/mlapp11/tmp.csv /tmp/mlapp11/many_predictions_logr.csv
 
+# I should report:
+${HOME}/anaconda3/bin/python rpt_linr.py
+${HOME}/anaconda3/bin/python rpt_logr.py
+
+
 exit
