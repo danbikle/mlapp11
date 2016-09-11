@@ -6,7 +6,7 @@ Logistic Regression.
 
 An example of seeing the comparison can be done with this shell command:
 
-./many_learn_test.bash TRAINSIZE=25 2010 SLOPES='[2,3,4,5]'
+./many_learn_test.bash TRAINSIZE=25 2010 SLOPES='[2,3,4,5,6,7,8,9]'
 
 The above command will gather two types of predictions for several years.
 
