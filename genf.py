@@ -21,7 +21,6 @@ import pdb
 # I should check cmd line arg
 import sys
 if (len(sys.argv) != 2):
-  pdb.set_trace()
   print('You typed something wrong:')
   print('Demo:')
   print("~/anaconda3/bin/python genf.py SLOPES='[3,5,9,17]'")
@@ -56,7 +55,7 @@ gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).
 for slope_i in slopes_a:
   rollx          = gspc_df.rolling(window=slope_i)
   col_s          = 'slope'+str(slope_i)
-  slope_sr       = rollx.mean().cp - rollx.mean().cp.shift(1)
+  slope_sr       = 100.0 * (rollx.mean().cp - rollx.mean().cp.shift(1))/rollx.mean().cp
   gspc_df[col_s] = slope_sr
 
 # I should write to CSV file to be used later:

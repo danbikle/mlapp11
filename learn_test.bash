@@ -3,7 +3,7 @@
 # learn_test.bash
 
 # Demo:
-# ./learn_test.bash TRAINSIZE=30 TESTYEAR=2015 SLOPES='[2,3,5,9,17]'
+# ./learn_test.bash TRAINSIZE=25 TESTYEAR=2015 SLOPES='[2,3,5,9,17]'
 
 # This script should build two types of ML models:
 # Linear   Regression
