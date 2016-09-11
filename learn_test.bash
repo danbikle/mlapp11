@@ -25,8 +25,8 @@ mkdir -p /tmp/mlapp11/
 /usr/bin/curl http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC > /tmp/mlapp11/gspc.csv
 
 # I should extract two columns and also sort:
-# echo cdate,cp                                                       > /tmp/mlapp11/gspc2.csv
-# sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp11/gspc2.csv
+echo cdate,cp                                                       > /tmp/mlapp11/gspc2.csv
+sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp11/gspc2.csv
 
 # I should compute features from the prices:
 

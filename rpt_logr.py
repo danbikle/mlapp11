@@ -6,8 +6,8 @@ import numpy  as np
 
 # First, I should report long-only-effectiveness:
 logr_df = pd.read_csv('/tmp/mlapp11/many_predictions_logr.csv')
-print('Long-Only-Effectiveness:')
-print(np.sum(logr_df.pctlead))
+#print('Long-Only-Effectiveness:')
+#print(np.sum(logr_df.pctlead))
 
 # I should report Logistic-Regression-Effectiveness:
 logr_df = pd.read_csv('/tmp/mlapp11/predictions_logr.csv')
