@@ -22,9 +22,7 @@
 mkdir -p /tmp/mlapp11/
 
 # I should get prices from Yahoo:
-# debug
-# /usr/bin/curl http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC > /tmp/mlapp11/gspc.csv
-# debug
+/usr/bin/curl http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC > /tmp/mlapp11/gspc.csv
 
 # I should extract two columns and also sort:
 # echo cdate,cp                                                       > /tmp/mlapp11/gspc2.csv
