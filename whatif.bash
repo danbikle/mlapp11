@@ -30,4 +30,18 @@ sort /tmp/mlapp11/gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> /tmp/mlapp
 tail -1 /tmp/mlapp11/gspc2.csv >> /tmp/mlapp11/gspc2.csv
 sed -i "$ s/,.*/,$3/" /tmp/mlapp11/gspc2.csv
 
+# I should compute features from the prices:
+${HOME}/anaconda3/bin/python genf.py $2
+
+# I should learn, test, and report:
+${HOME}/anaconda3/bin/python learn_tst_rpt.py $1 TESTYEAR=2016
+
+echo _
+echo whatif price is $3
+echo logr prediction:
+tail -1 /tmp/mlapp11/predictions_logr.csv
+echo linr prediction:
+tail -1 /tmp/mlapp11/predictions_linr.csv
+echo _
+
 exit
