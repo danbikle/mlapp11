@@ -34,7 +34,7 @@ sed -i "$ s/,.*/,$3/" /tmp/mlapp11/gspc2.csv
 ${HOME}/anaconda3/bin/python genf.py $2
 
 # I should learn, test, and report:
-${HOME}/anaconda3/bin/python learn_tst_rpt.py $1 TESTYEAR=2016
+${HOME}/anaconda3/bin/python learn_tst_rpt.py $1 TESTYEAR=`date +%Y`
 
 echo _
 echo whatif price is $3
